@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:text="¿No tienes cuenta? Regístrate aquí"
             android:textColor="#F6F6F6"
-            android:textSize="16sp"
+            android:textSize="@dimen/login"
             android:gravity="center"
             android:paddingTop="12dp"
             android:clickable="true"

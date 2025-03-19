@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@drawable/fondo_menu">
+    android:background="@drawable/fondo_menu"
+    tools:context=".MainActivity">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/etTiempo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:text="00:00"
+        android:textSize="@dimen/text_size_title"
+        android:textColor="#FFFFFF"
         android:gravity="center"
-        android:layout_centerHorizontal="true"
-        >
-
-        <EditText
-            android:id="@+id/etTiempo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="00:00"
-            android:textColor="#FFFFFF"
-            android:textSize="50dp" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
     <LinearLayout
+        android:id="@+id/layoutPuzzleSuperior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/etTiempo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -41,15 +39,15 @@
             android:orientation="horizontal"
             >
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="2dp"
+                android:layout_width="@dimen/cell_width_dos"
+                android:layout_height="@dimen/cell_height_dos"
+                android:layout_margin="@dimen/margin_normal_dos"
                 android:id="@+id/tvSA"
                 />
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="2dp"
+                android:layout_width="@dimen/cell_width_dos"
+                android:layout_height="@dimen/cell_height_dos"
+                android:layout_margin="@dimen/margin_normal_dos"
                 android:id="@+id/tvSB"
                 />
         </LinearLayout>
@@ -59,35 +57,37 @@
             android:orientation="horizontal"
             >
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="2dp"
+                android:layout_width="@dimen/cell_width_dos"
+                android:layout_height="@dimen/cell_height_dos"
+                android:layout_margin="@dimen/margin_normal_dos"
                 android:id="@+id/tvSC"
                 />
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="2dp"
+                android:layout_width="@dimen/cell_width_dos"
+                android:layout_height="@dimen/cell_height_dos"
+                android:layout_margin="@dimen/margin_normal_dos"
                 android:id="@+id/tvSD"
                 />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/layoutBotones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="275dp">
+        app:layout_constraintTop_toBottomOf="@+id/layoutPuzzleSuperior"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_normal">
 
         <TextView
             android:background="@drawable/modelo_boton1"
             android:id="@+id/btMezclar"
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:textSize="25dp"
+            android:layout_width="@dimen/witdh_button"
+            android:layout_height="@dimen/height_button"
+            android:layout_margin="@dimen/margin_small"
+            android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"
             android:gravity="center"
             android:textColor="@android:color/black"
@@ -95,10 +95,10 @@
 
         <TextView
             android:background="@drawable/modelo_boton1"
-            android:layout_width="140dp"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:textSize="25dp"
+            android:layout_width="@dimen/witdh_button"
+            android:layout_height="@dimen/height_button"
+            android:layout_margin="@dimen/margin_small"
+            android:textSize="@dimen/text_size_medium"
             android:textStyle="bold"
             android:gravity="center"
             android:textColor="@android:color/black"
@@ -112,27 +112,30 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="380dp"
         android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/layoutBotones"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/margin_small"
         >
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_small"
             >
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="@dimen/cell_width_large_dos"
+                android:layout_height="@dimen/cell_height_large_dos"
                 android:gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/margin_small"
                 android:id="@+id/tvS0"
                 />
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="@dimen/cell_width_large_dos"
+                android:layout_height="@dimen/cell_height_large_dos"
                 android:gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/margin_small"
                 android:id="@+id/tvS1"
                 />
         </LinearLayout>
@@ -142,19 +145,19 @@
             android:orientation="horizontal"
             >
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="@dimen/cell_width_large_dos"
+                android:layout_height="@dimen/cell_height_large_dos"
                 android:gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/margin_small"
                 android:id="@+id/tvS2"
                 />
             <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="@dimen/cell_width_large_dos"
+                android:layout_height="@dimen/cell_height_large_dos"
                 android:gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/margin_small"
                 android:id="@+id/tvS3"
                 />
         </LinearLayout>
     </LinearLayout>
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

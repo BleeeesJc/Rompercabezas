@@ -1,3 +1,38 @@
 <resources>
       <dimen name="fab_margin">48dp</dimen>
+    <dimen name="login">30dp</dimen>
+
+    <dimen name="text_size_small">24sp</dimen>
+    <dimen name="text_size_medium">45sp</dimen>
+    <dimen name="text_size_large">65sp</dimen>
+    <dimen name="text_size_title">90sp</dimen>
+
+    <dimen name="cell_width_small">90dp</dimen>
+    <dimen name="cell_height_small">90dp</dimen>
+
+    <dimen name="cell_width_large">130dp</dimen>
+    <dimen name="cell_height_large">130dp</dimen>
+
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_normal">20dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+
+    <dimen name="height_button">80dp</dimen>
+    <dimen name="witdh_button">220dp</dimen>
+
+    <dimen name="cell_width_dos">150dp</dimen>
+    <dimen name="cell_height_dos">150dp</dimen>
+    <dimen name="margin_normal_dos">2dp</dimen>
+    <dimen name="cell_width_large_dos">210dp</dimen>
+    <dimen name="cell_height_large_dos">210dp</dimen>
+
+    <dimen name="cell_width_tres">100dp</dimen>
+    <dimen name="cell_height_tres">100dp</dimen>
+
+    <dimen name="cell_width_cuatro">80dp</dimen>
+    <dimen name="cell_height_cuatro">80dp</dimen>
+    <dimen name="cell_width_large_cuatro">120dp</dimen>
+    <dimen name="cell_height_large_cuatro">120dp</dimen>
+    <dimen name="height_button_cuatro">80dp</dimen>
+    <dimen name="witdh_button_cuatro">220dp</dimen>
    </resources>
