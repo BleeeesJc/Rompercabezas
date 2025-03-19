@@ -48,6 +48,7 @@ public class Dos_Fragment extends Fragment {
     int segundos = 0;
     Handler handler = new Handler();
     boolean resolviendo = false;
+    boolean usoResolver = false;
 
     private void dividirImagen(Bitmap imagen) {
         imagen = Bitmap.createScaledBitmap(imagen, 300, 300, true);
@@ -168,6 +169,7 @@ public class Dos_Fragment extends Fragment {
 
     private void Solucion(List<Integer> solucion) {
         resolviendo = true;
+        usoResolver = true;
         int delay = 500;
         for (int i = 0; i < solucion.size(); i++) {
             final int movimiento = solucion.get(i);
@@ -226,26 +228,38 @@ public class Dos_Fragment extends Fragment {
     private void terminar() {
         contador = false;
         handler.removeCallbacksAndMessages(null);
-        String tiempoFinal = ettiempo.getText().toString();
-        int tiempoSegundos = segundos;
-        int usuarioId = Sesion.getUsuarioId(requireContext());
-        String dificultad = getArguments() != null ? getArguments().getString("dificultad", "Fácil") : "Fácil";
-        String tipo = getArguments() !=null ? getArguments().getString("tamaño","3x3"):"3x3";
-        String fecha = obtenerFechaActual();
-        ModeloScore puntaje = new ModeloScore(0, usuarioId, dificultad, tiempoSegundos, tipo,fecha);
-        sqlScore sql = new sqlScore(getContext());
-        long resultado = sql.insertarPuntaje(puntaje);
-        if (resultado != -1) {
-            Log.i("valen", "Puntaje guardado con éxito.");
-        } else {
-            Log.e("valen", "Error al guardar el puntaje.");
+        if(usoResolver){
+            usoResolver = false;
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle("¡Inténtalo de nuevo!");
+            builder.setMessage("Debes completar el rompecabezas sin usar la solución automática.");
+            builder.setPositiveButton("Aceptar", (dialog, which) -> {
+                dialog.dismiss();
+                reiniciarJuego();
+            });
+            builder.show();
+        }else{
+            String tiempoFinal = ettiempo.getText().toString();
+            int tiempoSegundos = segundos;
+            int usuarioId = Sesion.getUsuarioId(requireContext());
+            String dificultad = getArguments() != null ? getArguments().getString("dificultad", "Fácil") : "Fácil";
+            String tipo = getArguments() !=null ? getArguments().getString("tamaño","3x3"):"3x3";
+            String fecha = obtenerFechaActual();
+            ModeloScore puntaje = new ModeloScore(0, usuarioId, dificultad, tiempoSegundos, tipo,fecha);
+            sqlScore sql = new sqlScore(getContext());
+            long resultado = sql.insertarPuntaje(puntaje);
+            if (resultado != -1) {
+                Log.i("valen", "Puntaje guardado con éxito.");
+            } else {
+                Log.e("valen", "Error al guardar el puntaje.");
+            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle("¡Felicidades!")
+                    .setMessage("Has completado el rompecabezas en " + tiempoFinal)
+                    .setPositiveButton("Aceptar", (dialog, which) -> reiniciarJuego())
+                    .show();
+            btmezclar.setEnabled(true);
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("¡Felicidades!")
-                .setMessage("Has completado el rompecabezas en " + tiempoFinal)
-                .setPositiveButton("Aceptar", (dialog, which) -> reiniciarJuego())
-                .show();
-        btmezclar.setEnabled(true);
     }
 
     private String obtenerFechaActual() {
@@ -333,6 +347,7 @@ public class Dos_Fragment extends Fragment {
                 if (!contador) {
                     contador();
                 }
+                usoResolver = false;
                 Log.i("valen", "Nodo tocado= " + j);
                 String[] vt = conexiones[j].split(",");
                 for (String s : vt) {

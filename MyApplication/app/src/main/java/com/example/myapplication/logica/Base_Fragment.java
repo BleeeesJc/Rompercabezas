@@ -224,35 +224,34 @@ public class Base_Fragment extends Fragment {
                 reiniciarJuego();
             });
             builder.show();
-            return;
+        }else{
+            String tiempoFinal = ettiempo.getText().toString();
+            int tiempoSegundos = segundos;
+            int usuarioId = Sesion.getUsuarioId(requireContext());
+            String dificultad = getArguments() != null ? getArguments().getString("dificultad", "Fácil") : "Fácil";
+            String tipo = "3x3";
+            String fecha = obtenerFechaActual();
+
+            ModeloScore puntaje = new ModeloScore(0, usuarioId, dificultad, tiempoSegundos, tipo, fecha);
+            sqlScore sql = new sqlScore(getContext());
+            long resultado = sql.insertarPuntaje(puntaje);
+
+            if (resultado != -1) {
+                Log.i("valen", "Puntaje guardado con éxito.");
+            } else {
+                Log.e("valen", "Error al guardar el puntaje.");
+            }
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle("¡Felicidades!");
+            builder.setMessage("Has completado el rompecabezas en " + tiempoFinal);
+            builder.setPositiveButton("Aceptar", (dialog, which) -> {
+                dialog.dismiss();
+                reiniciarJuego();
+            });
+            builder.show();
+            btgenerar.setEnabled(true);
         }
-
-        String tiempoFinal = ettiempo.getText().toString();
-        int tiempoSegundos = segundos;
-        int usuarioId = Sesion.getUsuarioId(requireContext());
-        String dificultad = getArguments() != null ? getArguments().getString("dificultad", "Fácil") : "Fácil";
-        String tipo = "3x3";
-        String fecha = obtenerFechaActual();
-
-        ModeloScore puntaje = new ModeloScore(0, usuarioId, dificultad, tiempoSegundos, tipo, fecha);
-        sqlScore sql = new sqlScore(getContext());
-        long resultado = sql.insertarPuntaje(puntaje);
-
-        if (resultado != -1) {
-            Log.i("valen", "Puntaje guardado con éxito.");
-        } else {
-            Log.e("valen", "Error al guardar el puntaje.");
-        }
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("¡Felicidades!");
-        builder.setMessage("Has completado el rompecabezas en " + tiempoFinal);
-        builder.setPositiveButton("Aceptar", (dialog, which) -> {
-            dialog.dismiss();
-            reiniciarJuego();
-        });
-        builder.show();
-        btgenerar.setEnabled(true);
     }
 
     private String obtenerFechaActual() {
