@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_login">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Listar Usuarios"
+            android:textSize="20sp"
+            android:id="@+id/tvListarUsuarios"
+            android:background="@drawable/listar_usuarios"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:padding="15dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Listar Puntajes"
+            android:textSize="20sp"
+            android:id="@+id/tvListarPuntajes"
+            android:background="@drawable/listar_puntajes"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:padding="15dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Agregar Usuario"
+            android:textSize="20sp"
+            android:id="@+id/tvAgregarUsuario"
+            android:background="@drawable/agregar_usuarios"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:padding="15dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Agregar Puntaje"
+            android:textSize="20sp"
+            android:id="@+id/tvAgregarPuntaje"
+            android:background="@drawable/agregar_puntajes"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:padding="15dp"
+            android:layout_margin="5dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"/>
+    </GridLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frCont"
+        />
+</LinearLayout>

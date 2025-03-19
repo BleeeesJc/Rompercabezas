@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_menu">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <Spinner
+            android:id="@+id/spNombres"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:spinnerMode="dropdown"
+            />
+
+        <Spinner
+            android:id="@+id/spMayor"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:spinnerMode="dropdown"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <Spinner
+            android:id="@+id/spDificultad"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:spinnerMode="dropdown"
+
+            />
+        <Spinner
+            android:id="@+id/spTipo"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:spinnerMode="dropdown"
+
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frCont" />
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.myapplication.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="Home">
+        <action
+            android:id="@+id/action_nav_home_to_baseFragment"
+            app:destination="@id/baseFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_dosFragment"
+            app:destination="@id/dosFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_tresFragment"
+            app:destination="@id/tresFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_cuatroFragment"
+            app:destination="@id/cuatroFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/baseFragment"
+        android:name="com.example.myapplication.logica.Base_Fragment"
+        android:label="Rompecabezas"
+        tools:layout="@layout/fragment_base" />
+    <fragment
+        android:id="@+id/dosFragment"
+        android:name="com.example.myapplication.logica.Dos_Fragment"
+        android:label="Rompecabezas"
+        tools:layout="@layout/fragment_dos" />
+    <fragment
+        android:id="@+id/tresFragment"
+        android:name="com.example.myapplication.logica.Tres_Fragment"
+        android:label="Rompecabezas"
+        tools:layout="@layout/fragment_tres" />
+    <fragment
+        android:id="@+id/cuatroFragment"
+        android:name="com.example.myapplication.logica.Cuatro_Fragment"
+        android:label="Rompecabezas"
+        tools:layout="@layout/fragment_cuatro" />
+
+    <fragment
+        android:id="@+id/nav_records"
+        android:name="com.example.myapplication.ui.records.RecordsFragment"
+        tools:layout="@layout/fragment_records"
+        android:label="@string/menu_records"/>
+
+</navigation>

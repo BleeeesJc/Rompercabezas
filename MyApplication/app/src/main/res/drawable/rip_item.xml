@@ -1,0 +1,4 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#B3D5E5">
+    <item android:drawable="@drawable/item_listas"/>
+</ripple>
