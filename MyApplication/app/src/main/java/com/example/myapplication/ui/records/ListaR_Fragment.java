@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 
 public class ListaR_Fragment extends Fragment {
-    private ListView listView;
+    ListView listView;
     private ArrayList<ModeloScore> listaPuntajes;
     private AdapterR adapterR;
     private sqlScore sql;

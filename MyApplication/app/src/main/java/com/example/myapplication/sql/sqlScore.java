@@ -97,40 +97,40 @@ public class sqlScore extends DBHelper {
     }
 
     public ArrayList<ModeloScore> listarPuntajesConFiltros(String orden, String dificultad, String puntaje, String tipo) {
-        ArrayList<ModeloScore> lista = new ArrayList<>();
-        Cursor cursor = null;
-        String ordenSQL = "ASC";
-
-        if (puntaje.equals("Mayor")) {
-            ordenSQL = "DESC";
-        } else if (puntaje.equals("Menor")) {
-            ordenSQL = "ASC";
+        if (orden.equals("Nombre") && dificultad.equals("Dificultad") && puntaje.equals("Tiempo") && tipo.equals("Tipo")) {
+            return listarPuntajes();
         }
 
-        String query = "SELECT * FROM puntajes";
+        ArrayList<ModeloScore> lista = new ArrayList<>();
+        Cursor cursor = null;
+        String query = "SELECT * " +
+                "FROM puntajes " +
+                "JOIN usuario ON puntajes.fkUsuario = usuario.pkUsuario";
+
         ArrayList<String> args = new ArrayList<>();
         boolean whereAdded = false;
-
         if (!dificultad.equals("Dificultad")) {
-            query += " WHERE dificultad = ?";
+            query += " WHERE puntajes.dificultad = ?";
             args.add(dificultad);
             whereAdded = true;
         }
-
         if (!tipo.equals("Tipo")) {
-            query += (whereAdded ? " AND" : " WHERE") + " tipo = ?";
+            query += (whereAdded ? " AND" : " WHERE") + " puntajes.tipo = ?";
             args.add(tipo);
         }
-
-        query += " ORDER BY score " + ordenSQL;
-
-        if (orden.equals("A-Z") || orden.equals("Z-A")) {
-            query += ", fkUsuario " + (orden.equals("A-Z") ? "ASC" : "DESC");
+        String orderClause = "";
+        if (puntaje.equals("Mayor") || puntaje.equals("Menor")) {
+            orderClause = "puntajes.score " + (puntaje.equals("Mayor") ? "DESC" : "ASC");
         }
-
+        else if (orden.equals("A-Z") || orden.equals("Z-A")) {
+            orderClause = "usuario.user " + (orden.equals("A-Z") ? "ASC" : "DESC");
+        }
+        else {
+            orderClause = "puntajes.pkPuntaje DESC";
+        }
+        query += " ORDER BY " + orderClause;
         try {
             cursor = db.rawQuery(query, args.toArray(new String[0]));
-
             if (cursor.moveToFirst()) {
                 do {
                     int id = cursor.getInt(0);
@@ -139,7 +139,6 @@ public class sqlScore extends DBHelper {
                     int score = cursor.getInt(3);
                     String tipoResult = cursor.getString(4);
                     String fecha = cursor.getString(5);
-
                     lista.add(new ModeloScore(id, fkUsuario, dif, score, tipoResult, fecha));
                 } while (cursor.moveToNext());
             } else {
